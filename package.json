@@ -1,0 +1,11 @@
+{
+    "name": "satellite-test-node-docker-app",
+    "version": "0.0.1",
+    "description": "A simple Node.js app running in Docker",
+    "main": "index.js",
+    "scripts": {
+     "start": "node index.js"
+    },
+    "author": "B",
+    "license": "MIT"
+    }
