@@ -3,5 +3,3 @@ services:
     build: .
     ports:
       - "2222:2222"  # Map port 2222 on the host to port 2222 in the container
-    networks:
-      - webnet
