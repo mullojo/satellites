@@ -1,5 +1,5 @@
 {
-    "name": "pouchdb-nodejs-app",
+    "name": "pouchdb-nodejs-server",
     "version": "0.0.1",
     "description": "PouchDB sync setup using Node.js on Alpine Docker",
     "main": "server.js",
@@ -10,7 +10,8 @@
       "express": "^4.19.2",
       "pouchdb": "^9.0.0",
       "pouchdb-adapter-leveldb": "^9.0.0",
-      "cors": "^2.8.5"
+      "cors": "^2.8.5",
+      "express-pouchdb": "^4.2.0"
     },
     "author": "B",
     "license": "MIT"
