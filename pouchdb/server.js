@@ -16,11 +16,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Create a PouchDB instance with LevelDB
-const db = new PouchDB('Order', { adapter: 'leveldb' });
-
 // Sync endpoint for replication and sync
-app.use('/db', require('express-pouchdb')(db));
+app.use('/db', require('express-pouchdb')(PouchDB));
 
 // Start the server
 app.listen(port, () => {
