@@ -1,0 +1,15 @@
+{
+    "name": "pouchdb-nodejs-app",
+    "version": "0.0.1",
+    "description": "PouchDB sync setup using Node.js on Alpine Docker",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.19.2",
+      "pouchdb": "^9.0.0",
+      "pouchdb-adapter-http": "^9.0.0"
+    }
+  }
+  
