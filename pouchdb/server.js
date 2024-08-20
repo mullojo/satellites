@@ -7,11 +7,7 @@ const app = express();
 const port = 3333;
 
 // Configure CORS to allow requests from any origin
-app.use(cors({
-  origin: '*', // Allow requests from any origin
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
-}));
+app.use(cors());
 
 // Create a local PouchDB instance with LevelDB
 const db = new PouchDB('Order', { adapter: 'leveldb' });
