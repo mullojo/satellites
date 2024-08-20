@@ -9,7 +9,7 @@
     "dependencies": {
       "express": "^4.19.2",
       "pouchdb": "^9.0.0",
-      "pouchdb-adapter-http": "^9.0.0"
+      "pouchdb-adapter-leveldb": "^9.0.0"
     }
   }
   
