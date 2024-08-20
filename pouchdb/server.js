@@ -6,12 +6,17 @@ const cors = require('cors');
 const app = express();
 const port = 3333;
 
+// Configure CORS to allow requests from specific origin and allow credentials
+const corsOptions = {
+  origin: 'https://cdpn.io', // Replace with the actual origin that needs access
+  credentials: true,        // Allow credentials to be included
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+};
+
 // Configure CORS to allow requests from any origin
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors(corsOptions));
+
 
 // Create a local PouchDB instance with LevelDB
 const db = new PouchDB('Order', { adapter: 'leveldb' });
