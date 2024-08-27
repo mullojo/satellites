@@ -1,12 +1,13 @@
 {
-    "name": "bitcoind-node-app",
-    "version": "0.0.1",
-    "description": "Node.js app for interacting with bitcoind",
-    "main": "app.js",
-    "scripts": {
-      "start": "node app.js"
-    },
-    "dependencies": {
-      "axios": "^1.7.5"
-    }
+  "name": "bitcoind-node-app",
+  "version": "0.0.1",
+  "description": "Node.js app for interacting with bitcoind",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.5"
   }
+}

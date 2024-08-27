@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const rpcURL = 'http://bitcoind:18332';  // Docker service name
 const rpcUser = process.env.RPC_USER;
