@@ -15,9 +15,6 @@ services:
   node-app:
     build: .
     container_name: nodejs
-    working_dir: /usr/src/app
-    volumes:
-      - ./:/usr/src/app
     environment:
       - RPC_USER=bitcoinuser
       - RPC_PASSWORD=bitcoinpassword
