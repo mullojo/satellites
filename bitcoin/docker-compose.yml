@@ -6,10 +6,10 @@ services:
   bitcoind:
     image: ruimarinho/bitcoin-core:latest
     container_name: bitcoind
-    command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server -rpcuser=bitcoinuser -rpcpassword=bitcoinpassword
+    command: bitcoind
     ports:
       - "18444:18444"  # P2P network port for regtest
-      - "18335:18335"  # RPC port, accessible from all IPs
+      - "18445:18445"  # RPC port, accessible from all IPs
     volumes:
       - bitcoind-data:/home/bitcoin/.bitcoin
       - ./bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
@@ -21,7 +21,7 @@ services:
     environment:
       - HOST=bitcoind
       - NETWORK=regtest
-      - PORT=18335
+      - PORT=18445
       - RPC_USER=bitcoinuser
       - RPC_PASSWORD=bitcoinpassword
     ports:
