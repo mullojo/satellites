@@ -6,12 +6,13 @@ services:
   bitcoind:
     image: ruimarinho/bitcoin-core:latest
     container_name: bitcoind
-    command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
+    command: bitcoind -printtoconsole
     ports:
       - "18444:18444"  # P2P network port for regtest
       - "18332:18335"  # RPC port, accessible from all IPs
     volumes:
       - bitcoind-data:/bitcoin
+      - ./bitcoin.conf:/bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
     restart: unless-stopped
 
   nodejs:
