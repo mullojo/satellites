@@ -14,6 +14,8 @@ services:
       - bitcoind-data:/home/bitcoin/.bitcoin
       - ./bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
     restart: unless-stopped
+    networks:
+      - net
 
   nodejs:
     build: .
@@ -29,3 +31,9 @@ services:
     depends_on:
       - bitcoind
     restart: unless-stopped
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
