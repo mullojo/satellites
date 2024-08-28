@@ -9,7 +9,7 @@ services:
     command: bitcoind
     ports:
       - "18444:18444"  # P2P network port for regtest
-      - "127.0.0.1:18445:18445"  # RPC port, accessible from all IPs
+      - "18445:18445"  # RPC port, accessible from all IPs
     volumes:
       - bitcoind-data:/home/bitcoin/.bitcoin
       - ./bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
