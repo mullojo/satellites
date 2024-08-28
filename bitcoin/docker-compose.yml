@@ -1,7 +1,3 @@
-networks:
-  net:
-    driver: bridge
-
 volumes:
   bitcoind-data:
     driver: local
@@ -13,12 +9,10 @@ services:
     command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
     ports:
       - "18444:18444"  # P2P network port for regtest
-      - "18332:18332"  # RPC port, accessible from all IPs
+      - "18332:18335"  # RPC port, accessible from all IPs
     volumes:
       - bitcoind-data:/bitcoin
     restart: unless-stopped
-    networks:
-      - net
 
   node-app:
     build: .
@@ -31,5 +25,3 @@ services:
     depends_on:
       - bitcoind
     restart: unless-stopped
-    networks:
-      - net
