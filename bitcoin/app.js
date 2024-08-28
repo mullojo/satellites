@@ -4,8 +4,7 @@ const Client = require('bitcoin-core');
 const client = new Client({
     network: process.env.NETWORK,
     username: process.env.RPC_USER,
-    password: process.env.RPC_PASSWORD,
-    port: process.env.PORT   // rpc Port
+    password: process.env.RPC_PASSWORD
 });
 
 async function getBlockchainInfo() {
@@ -17,6 +16,6 @@ async function getBlockchainInfo() {
     }
 }
 
-console.log("nodejs started up...")
+//console.log("nodejs started up...")
 
-//getBlockchainInfo();
+getBlockchainInfo();

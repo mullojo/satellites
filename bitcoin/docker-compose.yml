@@ -1,34 +1,26 @@
+version: '3.8'
+
 volumes:
   bitcoind-data:
     driver: local
-
-networks:
-  net:
-    driver: bridge
 
 services:
   bitcoind:
     image: ruimarinho/bitcoin-core:latest
     container_name: bitcoind
-    command: bitcoind
-    ports:
-      - "18444:18444"  # P2P network port for regtest
-      - "18445:18445"  # RPC port, accessible from all IPs
+    command: bitcoind -regtest -printtoconsole -server -rpcallowip=0.0.0.0/0
     volumes:
       - bitcoind-data:/home/bitcoin/.bitcoin
       - ./bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
-    networks:
-      - net
+    network_mode: host  # Use the host network
 
   nodejs:
     build: .
     container_name: nodejs
     environment:
       - NETWORK=regtest
-      - PORT=18445
       - RPC_USER=bitcoinuser
       - RPC_PASSWORD=bitcoinpassword
     ports:
       - "3333:3333"  # Port for the Node.js app
-    networks:
-      - net
+    network_mode: host  # Use the host network
