@@ -19,6 +19,7 @@ services:
     build: .
     container_name: nodejs
     environment:
+      - RPC_URL=bitcoind:18335
       - RPC_USER=bitcoinuser
       - RPC_PASSWORD=bitcoinpassword
     ports:
