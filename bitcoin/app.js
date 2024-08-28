@@ -18,4 +18,6 @@ async function getBlockchainInfo() {
     }
 }
 
-getBlockchainInfo();
+console.log("nodejs started up...")
+
+//getBlockchainInfo();
