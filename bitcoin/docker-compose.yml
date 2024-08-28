@@ -1,6 +1,16 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+networks:
+  bitcoin-network:
+    driver: bridge
+
+volumes:
+  bitcoind-data:
+    driver: local
+
 services:
   bitcoind:
-    image: bitcoindevelopernetwork/bitcoind-regtest
+    image: ruimarinho/bitcoin:latest
     container_name: bitcoind-node
     command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
     ports:
@@ -25,11 +35,3 @@ services:
     restart: unless-stopped
     networks:
       - bitcoin-network
-
-volumes:
-  bitcoind-data:
-    driver: local
-
-networks:
-  bitcoin-network:
-    driver: bridge
