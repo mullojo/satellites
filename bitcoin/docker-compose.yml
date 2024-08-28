@@ -5,7 +5,7 @@ services:
     command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
     ports:
       - "18444:18444"  # P2P network port for regtest
-      - "127.0.0.1:18332:18332"  # RPC port, only accessible from localhost
+      - "18332:18332"  # RPC port, accessible from all IPs
     volumes:
       - bitcoind-data:/bitcoin
     restart: unless-stopped
