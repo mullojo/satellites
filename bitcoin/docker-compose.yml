@@ -2,6 +2,10 @@ volumes:
   bitcoind-data:
     driver: local
 
+networks:
+  net:
+    driver: bridge
+
 services:
   bitcoind:
     image: ruimarinho/bitcoin-core:latest
@@ -21,7 +25,6 @@ services:
     build: .
     container_name: nodejs
     environment:
-      - HOST=bitcoind
       - NETWORK=regtest
       - PORT=18445
       - RPC_USER=bitcoinuser
@@ -33,7 +36,3 @@ services:
     restart: unless-stopped
     networks:
       - net
-
-networks:
-  net:
-    driver: bridge

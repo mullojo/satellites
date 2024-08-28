@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "description": "Node.js app for interacting with bitcoind",
   "main": "app.js",
-  "type": "module",
   "scripts": {
-    "start": "app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "bitcoin-core": "^4.2.0"

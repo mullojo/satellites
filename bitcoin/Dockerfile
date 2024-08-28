@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3333
 
 # Command to run your app
-CMD [ "app.js" ]
+CMD ["node", "app.js"]
