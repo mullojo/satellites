@@ -1,32 +1,20 @@
-import axios from 'axios';
+import Client from 'bitcoin-core';
 
-const rpcURL = process.env.RPC_URL
-const rpcUser = process.env.RPC_USER;
-const rpcPassword = process.env.RPC_PASSWORD;
+// Initialize the Bitcoin client
+const client = new Client({
+    network: process.env.NETWORK,
+    username: process.env.RPC_USER,
+    password: process.env.RPC_PASSWORD,
+    host: process.env.HOST,  // Docker service name or appropriate host
+    port: process.env.PORT   // rpc Port
+});
 
 async function getBlockchainInfo() {
     try {
-        const response = await axios.post(rpcURL, {
-            jsonrpc: "1.0",
-            id: "curltest",
-            method: "getblockchaininfo",
-            params: []
-        }, {
-            auth: {
-                username: rpcUser,
-                password: rpcPassword
-            },
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-
-        console.log('Blockchain Info:', response.data);
+        const response = await client.getBlockchainInfo();
+        console.log('Blockchain Info:', response);
     } catch (error) {
         console.error('Error fetching blockchain info:', error.message);
-        if (error.response) {
-            console.error('Error response:', error.response.data);
-        }
     }
 }
 
