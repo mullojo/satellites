@@ -1,5 +1,5 @@
 networks:
-  bitcoin-network:
+  net:
     driver: bridge
 
 volumes:
@@ -8,7 +8,7 @@ volumes:
 
 services:
   bitcoind:
-    image: ruimarinho/bitcoin:latest
+    image: ruimarinho/bitcoin-core:latest
     container_name: bitcoind-node
     command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
     ports:
@@ -18,7 +18,7 @@ services:
       - bitcoind-data:/bitcoin
     restart: unless-stopped
     networks:
-      - bitcoin-network
+      - net
 
   node-app:
     build: .
@@ -32,4 +32,4 @@ services:
       - bitcoind
     restart: unless-stopped
     networks:
-      - bitcoin-network
+      - net
