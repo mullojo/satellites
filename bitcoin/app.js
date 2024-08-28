@@ -11,7 +11,7 @@ const client = new Client({
 
 async function getBlockchainInfo() {
     try {
-        const response = await client.getBlockchainInfo();
+        const response = await client.getBlockchainInformation();
         console.log('Blockchain Info:', response);
     } catch (error) {
         console.error('Error fetching blockchain info:', error.message);
