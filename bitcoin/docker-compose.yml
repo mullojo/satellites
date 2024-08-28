@@ -5,7 +5,7 @@ volumes:
 services:
   bitcoind:
     image: ruimarinho/bitcoin-core:latest
-    container_name: bitcoind-node
+    container_name: bitcoind
     command: bitcoind -regtest -printtoconsole -rpcallowip=0.0.0.0/0 -rpcbind=0.0.0.0 -server
     ports:
       - "18444:18444"  # P2P network port for regtest
@@ -14,7 +14,7 @@ services:
       - bitcoind-data:/bitcoin
     restart: unless-stopped
 
-  node-app:
+  nodejs:
     build: .
     container_name: nodejs
     environment:
