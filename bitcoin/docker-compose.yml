@@ -1,7 +1,7 @@
 services:
-  bitcoin:
+  btc:
     image: bitcoin/bitcoin:latest
-    container_name: bitcoin
+    container_name: btc
     ports:
       - "18443:18443"  # JSON-RPC port
       - "18444:18444"  # P2P port
@@ -23,7 +23,7 @@ services:
     networks:
       - net
     depends_on:
-      - bitcoin
+      - btc
 
 networks:
   net:
