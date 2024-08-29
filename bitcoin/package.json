@@ -1,12 +1,13 @@
 {
-  "name": "bitcoind-node-app",
-  "version": "0.0.1",
-  "description": "Node.js app for interacting with bitcoind",
+  "name": "minimal-bitcoin-rpc-app",
+  "version": "1.0.0",
+  "description": "A minimal Node.js app for interacting with Bitcoin Core using rpcauth token.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "bitcoin-core": "^4.2.0"
+    "axios": "^1.7.5",
+    "express": "^4.19.2"
   }
 }

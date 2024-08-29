@@ -1,24 +1,30 @@
-volumes:
-  bitcoind-data:
-    driver: local
-
 services:
-  bitcoind:
-    image: ruimarinho/bitcoin-core:latest
-    container_name: bitcoind
-    command: bitcoind -regtest -printtoconsole -server -rpcallowip=0.0.0.0/0
-    volumes:
-      - bitcoind-data:/home/bitcoin/.bitcoin
-      - ./bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf  # Mount your local bitcoin.conf file
-    network_mode: host  # Use the host network
+  bitcoin:
+    image: bitcoin/bitcoin:latest
+    container_name: bitcoin
+    ports:
+      - "18443:18443"  # JSON-RPC port
+      - "18444:18444"  # P2P port
+    networks:
+      - net
+    command:
+      -printtoconsole
+      -regtest=1
+      -rpcallowip=0.0.0.0/0  # Allow connections from any IP
+      -rpcbind=0.0.0.0       # Bind to all network interfaces
+      -rpcauth=bobby:0207fa532832367468c64e747c95e0b2$e9246affabe158e177c0ebc11a74b37fc14b9700664d7fe76f8ceeccd8692938
 
   nodejs:
-    build: .
+    build:
+      context: ./nodejs
     container_name: nodejs
-    environment:
-      - NETWORK=regtest
-      - RPC_USER=bitcoinuser
-      - RPC_PASSWORD=bitcoinpassword
     ports:
-      - "3333:3333"  # Port for the Node.js app
-    network_mode: host  # Use the host network
+      - "3000:3000"  # Your application's port
+    networks:
+      - net
+    depends_on:
+      - bitcoin
+
+networks:
+  net:
+    driver: bridge
